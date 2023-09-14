@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product to CSV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .attribute-group {
+            margin-bottom: 10px;
+        }
+
+        .attribute-group label {
+            margin-bottom: 3px;
+        }
+
+		.attribute-group .attribute-name,
+        .attribute-group .attribute-value {
+            display: inline-block;
+            width: calc(50% - 5px);
+            margin-right: 10px;
+        }
+		
+		
+        .add-attribute {
+            color: #888;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+		
+		
+    </style>
+	
+</head>
+<body>
+    <div class="container">
+        <h1>Platinum Product to CSV</h1>
+        <form id="product-form">
+            <!-- Form fields here -->
+            <div class="form-group">
+                <label for="sku">SKU:</label>
+                <input type="text" name="sku" id="sku">
+            </div>
+
+            <div class="form-group">
+                <label for="product-name"><br>
+                Product Name:</label>
+                <input type="text" name="product-name" id="product-name">
+            </div>
+
+            <div class="form-group">
+                <label for="mpn"><br>
+                MPN:</label>
+                <input type="text" name="mpn" id="mpn">
+            </div>
+
+            <div class="form-group">
+                <label for="manufacturer"><br>
+                Manufacturer:</label>
+                <input type="text" name="manufacturer" id="manufacturer">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity"><br>
+                Quantity:</label>
+                <input type="text" name="quantity" id="quantity">
+            </div>
+
+            <div class="form-group">
+                <label for="weight"><br>
+                Weight:</label>
+                <input type="text" name="weight" id="weight">
+            </div>
+			
+  <div class="form-group">
+    <label for="category-level-1"><br>Category Level 1:</label>
+    <select name="category-level-1" id="category-level-1" onchange="updateCategoryLevel2()">
+      <option value="Products">Products</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="category-level-2"><br>Category Level 2:</label>
+    <select name="category-level-2" id="category-level-2" onchange="updateCategoryLevel3()">
+      <option value=""></option>
+      <option value="Accessories">Accessories</option>
+      <option value="Bearings">Bearings</option>
+      <option value="Cables & Connectors">Cables & Connectors</option>
+      <option value="Capacitors">Capacitors</option>
+      <option value="Control System & PLCs">Control System & PLCs</option>
+      <option value="Current Transformers">Current Transformers</option>
+      <option value="Cutting Tools">Cutting Tools</option>
+      <option value="Electric Motors">Electric Motors</option>
+      <option value="Electrical Filters">Electrical Filters</option>
+      <option value="Electronic Elements">Electronic Elements</option>
+      <option value="Encoders and Resolvers">Encoders and Resolvers</option>
+      <option value="Equipment">Equipment</option>
+      <option value="Fittings">Fittings</option>
+      <option value="Hydraulic System">Hydraulic System</option>
+      <option value="Industrial Electrical Parts">Industrial Electrical Parts</option>
+      <option value="Industrial Fans">Industrial Fans</option>
+      <option value="Industrial Plug">Industrial Plug</option>
+      <option value="Measuring Tools & Scales">Measuring Tools & Scales</option>
+      <option value="Nordson Spare Parts">Nordson Spare Parts</option>
+      <option value="Other Electrical Equipment">Other Electrical Equipment</option>
+      <option value="Other Mechanical Equipment">Other Mechanical Equipment</option>
+      <option value="Others">Others</option>
+      <option value="Overhead Cranes">Overhead Cranes</option>
+      <option value="Pneumatic System">Pneumatic System</option>
+      <option value="Power Supplies">Power Supplies</option>
+      <option value="Power Transmission">Power Transmission</option>
+      <option value="Pressure Switches">Pressure Switches</option>
+      <option value="Protection Power">Protection Power</option>
+      <option value="Pumps">Pumps</option>
+      <option value="Raw Materials">Raw Materials</option>
+      <option value="Schneider Equipment">Schneider Equipment</option>
+      <option value="Sensors">Sensors</option>
+      <option value="Soft Starters">Soft Starters</option>
+      <option value="Switches">Switches</option>
+      <option value="Transformers">Transformers</option>
+      <option value="Valves">Valves</option>
+      <option value="Videojet Spare Parts">Videojet Spare Parts</option>
+      <option value="Wire Ropes">Wire Ropes</option>
+      <option value="Work Shop">Work Shop</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="category-level-3"><br>Category Level 3:</label>
+    <select name="category-level-3" id="category-level-3" onchange="updateCategoryLevel4()">
+      <option value=""></option>
+      <!-- Options for Category Level 3 will be populated dynamically based on the selection of Category Level 2 -->
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="category-level-4"><br>Category Level 4:</label>
+    <select name="category-level-4" id="category-level-4" onchange="updateCategoryLevel5()">
+      <option value=""></option>
+      <!-- Options for Category Level 4 will be populated dynamically based on the selection of Category Level 3 -->
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="category-level-5"><br>Category Level 5:</label>
+    <select name="category-level-5" id="category-level-5" onchange="updateCategoryLevel6()">
+      <option value=""></option>
+      <!-- Options for Category Level 5 will be populated dynamically based on the selection of Category Level 4 -->
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="category-level-6"><br>Category Level 6:</label>
+    <select name="category-level-6" id="category-level-6">
+      <option value=""></option>
+      <!-- Options for Category Level 6 will be populated dynamically based on the selection of Category Level 5 -->
+    </select>
+	  
+	   <div class="form-group">
+                <label for="category-level-7"><br>
+                Category Level 7:</label>
+                <input type="text" name="category-level-7" id="category-level-7">
+            </div>
+  </div>
+			
+
+  <script>
+    // JavaScript
+    function updateCategoryLevel2() {
+      const categoryLevel1 = document.getElementById("category-level-1").value;
+      const categoryLevel2Select = document.getElementById("category-level-2");
+
+      // Remove previous options
+      categoryLevel2Select.innerHTML = "";
+
+      // Add new options based on the selected Category Level 1
+      if (categoryLevel1 === "Products") {
+        const options = [
+            "",
+            "Accessories",
+            "Bearings",
+            "Cables & Connectors",
+            "Capacitors",
+            "Control System & PLCs",
+            "Current Transformers",
+            "Cutting Tools",
+            "Electric Motors",
+            "Electrical Filters",
+            "Electronic Elements",
+            "Encoders and Resolvers",
+            "Equipment",
+            "Fittings",
+            "Hydraulic System",
+            "Industrial Electrical Parts",
+            "Industrial Fans",
+            "Industrial Plug",
+            "Measuring Tools & Scales",
+            "Nordson Spare Parts",
+            "Other Electrical Equipment",
+            "Other Mechanical Equipment",
+            "Others",
+            "Overhead Cranes",
+            "Pneumatic System",
+            "Power Supplies",
+            "Power Transmission",
+            "Pressure Switches",
+            "Protection Power",
+            "Pumps",
+            "Raw Materials",
+            "Schneider Equipment",
+            "Sensors",
+            "Soft Starters",
+            "Switches",
+            "Transformers",
+            "Valves",
+            "Videojet Spare Parts",
+            "Wire Ropes",
+            "Work Shop",
+            "Steam Systems",
+        ];
+        populateOptions(categoryLevel2Select, options);
+      }
+      // Implement other conditions for Category Level 1 if needed
+      updateCategoryLevel3();
+    }
+
+    function updateCategoryLevel3() {
+      const categoryLevel2 = document.getElementById("category-level-2").value;
+      const categoryLevel3Select = document.getElementById("category-level-3");
+
+      // Remove previous options
+      categoryLevel3Select.innerHTML = "";
+
+      // Add new options based on the selected Category Level 2
+      if (categoryLevel2 === "Bearings") {
+        const options = [
+			" ",
+          "Adapter sleeve",
+          "Bearing Parts",
+          "Bushings",
+          "Housing Units",
+          "Linear Bearings",
+          "Spherical Plain Bearings",
+          "Screw Bearings",
+          "Rolling Bearings",
+          "Rod Ends",
+          "Other Bearings",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Cables & Connectors") {
+        const options = [
+			" ",
+          "Cable Connectors",
+          "Passive Junction Blocks",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Control System & PLCs") {
+        const options = [
+			" ",
+          "ABB-PLCs",
+          "Allen-Bradley",
+          "Beckhoff",
+          "Braking Resistors",
+          "Circuit Boards",
+          "Control Panels / Displays",
+          "Cooling Units",
+          "Counter",
+          "Interface Converters",
+          "Inverters",
+          "Omron PLCs",
+          "Other PLCs",
+          "Relays",
+          "Safety Relays",
+          "Servo Motor Drives",
+          "Siemens-PLCs",
+          "Temperature Controllers",
+          "Timers",
+          "Wago",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Cutting Tools") {
+        const options = [
+			" ",
+          "Cutting Discs",
+          "Gear Hobs",
+          "Inserts",
+          "Rotary Burrs",
+          "Thread Cutting Tools",
+          "Tool Holders",
+          "Twist Drills",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Electric Motors") {
+        const options = [
+			" ",
+          "Clutches",
+          "Electric Motor Brakes & Safety Brakes",
+          "Gear Motors",
+          "Servo Gearboxes",
+          "Servo Motors",
+          "Three Phase E-Motor",
+          "Vibration Motors",
+          "Worm Gearboxes",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Electronic Elements") {
+        const options = [
+			" ",
+          "Diodes",
+          "Thyristors",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Encoders and Resolvers") {
+        const options = [
+			" ",
+          "Linear Encoders",
+          "Rotary Encoders",
+          "Tachogenerators",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Fittings") {
+        const options = [
+			" ",
+          "Carbon Steel Fittings",
+          "Flexible Joints",
+          "Pipe Clamps",
+          "Pneumatic Fittings",
+          "Gaskets",
+          "Stainless Steel Fittings",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Hydraulic System") {
+        const options = [
+			" ",
+          "Filter Elements",
+          "Oil Seals",
+          "Hydraulic Actuators",
+          "Hydraulic Filters",
+          "Hydraulic Flow Control Valves",
+          "Hydraulic Motor Drives",
+          "Hydraulic Pumps",
+          "Hydraulic Valves",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Measuring Tools & Scales") {
+        const options = [
+			" ",
+          "Crane Scales",
+          "Electrical Measuring Instruments",
+          "Load Cells",
+          "Scales",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Overhead Cranes") {
+        const options = [
+			" ",
+          "Overhead Crane",
+          "Overhead Crane Components",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Pneumatic System") {
+        const options = [
+			" ",
+          "Air Preparation Equipment",
+          "Electrical Coils",
+          "Gas Spring Actuators",
+          "Pneumatic Actuators",
+          "Pneumatic Flow Control Valves",
+          "Pneumatic Terminals System",
+          "Pneumatic Valves",
+          "Pressure Regulators",
+          "Shock Absorbers",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Power Transmission") {
+        const options = [
+			" ",
+          "Belts",
+          "Couplings",
+          "Pulleys",
+          "Roller Chain",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Protection Power") {
+        const options = [
+			" ",
+          "Accessories Circuit Breakers",
+          "Accessories Contactor",
+          "Circuit Breakers",
+          "Contactors",
+          "Fuse Holders",
+          "Fuses",
+          "Solid State Relays",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Raw Materials") {
+        const options = [
+			" ",
+          "Aluminum",
+          "Brass",
+          "Bronze Alloy",
+          "Cast Iron",
+          "Chrome Plated Steel",
+          "Copper Metal",
+          "Mild Steel ST52",
+          "PVC Strip",
+          "Rubbers",
+          "Stainless Steel",
+          "Teflon and Plastic",
+          "Tool Steel",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Sensors") {
+        const options = [
+			" ",
+          "Balluff",
+          "Datasensor / Datalogic",
+          "Dungs",
+          "Festo",
+          "Honeywell",
+          "Hydac",
+          "ifm",
+          "Instrumentation",
+          "IPF",
+          "Krom Schroder",
+          "Leuze",
+          "Omron",
+          "Other Sensors",
+          "Pepperl Fuchs",
+          "Proxitron",
+          "Rexroth",
+          "Schneider Telemecanique",
+          "Selet",
+          "Sick",
+          "Siemens",
+          "Temperature Sensors",
+          "Turck",
+          "Wenglor",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Switches") {
+        const options = [
+			" ",
+          "Industrial Electrical Switch",
+          "Joystick Controllers",
+          "Limit Switches",
+          "Safety Devices",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Valves") {
+        const options = [
+			" ",
+          "Gas Valves",
+          "Hydraulic Control Valves",
+          "Water Valves",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Steam Systems") {
+        const options = [
+			" ",
+          "Valves",
+        ];
+        populateOptions(categoryLevel3Select, options);
+      }
+      // Implement other conditions for Category Level 2 if needed
+      updateCategoryLevel4();
+    }
+
+    function updateCategoryLevel4() {
+      const categoryLevel3 = document.getElementById("category-level-3").value;
+      const categoryLevel4Select = document.getElementById("category-level-4");
+
+      // Remove previous options
+      categoryLevel4Select.innerHTML = "";
+
+      // Add new options based on the selected Category Level 3
+      if (categoryLevel3 === "Housing Units") {
+        const options = [
+			" ",
+          "Flanged Block Housing Units",
+          "Housing accessories",
+          "Plummer Block Housing Units",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Linear Bearings") {
+        const options = [
+			" ",
+          "ABBA Linear Guideways",
+          "Hiwin Linear Guideways",
+          "Other Linear Bearings",
+          "PMI",
+          "Rexroth Linear Motion Technology",
+          "Schaeffler - INA Linear Bearings",
+          "Shaft Guiding & Linear Ball Bushings",
+          "THK Linear Motion System",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Rolling Bearings") {
+        const options = [
+			" ",
+          "Combined Axial, Radial Bearings",
+          "Radial Bearings",
+          "Thrust (Axial) Bearings",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Inverters") {
+        const options = [
+			" ",
+          "Frequency Inverters",
+          "Inverters Accessories",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Twist Drills") {
+        const options = [
+			" ",
+          "DIN 1869",
+          "DIN 338",
+          "DIN 340",
+          "DIN 345",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Electric Motor Brakes & Safety Brakes") {
+        const options = [
+			" ",
+          "BARUFFALDI Brakes",
+          "Bauer Brakes",
+          "Binder Brakes",
+          "BONFIGLIOLI Brakes",
+          "Brake Rectifiers",
+          "Brake Spare Parts",
+          "KEB",
+          "LENZE & INTORQ",
+          "Other Brakes",
+          "SEW Brakes",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Stainless Steel Fittings") {
+        const options = [
+			" ",
+          "Stainless Steel Flanges",
+          "Stainless Steel Mirror Fittings",
+          "Stainless Steel Tees",
+          "Stainless Steel Reducers",
+          "Stainless Steel Caps",
+          "Stainless Steel Elbows",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Carbon Steel Fittings") {
+        const options = [
+			" ",
+          "Carbon Steel Flanges",
+          "Carbon Steel Tees",
+          "Carbon Steel Reducers",
+          "Carbon Steel Caps",
+          "Carbon Steel Elbows",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Hydraulic Pumps") {
+        const options = [
+			" ",
+          "Gear Pumps",
+          "Piston Pumps",
+          "Screw Pumps",
+          "Vane Pumps",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Hydraulic Valves") {
+        const options = [
+			" ",
+          "Directional Control Valves",
+          "Pressure Control Valves",
+          "Servo Valves",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Overhead Crane Components") {
+        const options = [
+			" ",
+          "Crane Brakes",
+          "Crane End Trucks",
+          "Crane Remote Controls",
+          "Overhead Crane Accessories",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Pneumatic Terminals System") {
+        const options = [
+			" ",
+          "Blanking Plates",
+          "End Plates",
+          "Interfaces",
+          "Multi-Pin Plates",
+          "Sub-Bases",
+          "Terminal Valves",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Pneumatic Roller Chain") {
+        const options = [
+			" ",
+          "British Standard | Metric",
+          "Single Strand Roller Chains",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Temperature Sensors") {
+        const options = [
+			" ",
+          "RTD",
+          "Thermocouple",
+          "Thermostats",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      } else if (categoryLevel3 === "Valves") {
+        const options = [
+			" ",
+          "Electrical Actuated Valves",
+          "Pneumatic Actuated Valves",
+          "Manual Operated Valves",
+        ];
+        populateOptions(categoryLevel4Select, options);
+      }
+      // Implement other conditions for Category Level 3 if needed
+      updateCategoryLevel5();
+    }
+
+    function updateCategoryLevel5() {
+      const categoryLevel4 = document.getElementById("category-level-4").value;
+      const categoryLevel5Select = document.getElementById("category-level-5");
+
+      // Remove previous options
+      categoryLevel5Select.innerHTML = "";
+
+      // Add new options based on the selected Category Level 4
+      if (categoryLevel4 === "Radial Bearings") {
+        const options = [
+			" ",
+          "Ball Bearings",
+          "Roller Bearings",
+          "Track Rollers",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "British Standard | Metric") {
+        const options = [
+			" ",
+          "Double Strand Roller Chains",
+          "Single Strand Roller Chains",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Stainless Steel Caps") {
+        const options = [
+			" ",
+          "Stainless Steel Buttweld Caps",
+          "Stainless Steel Socket Weld Caps",
+          "Stainless Steel Swage Lock Caps",
+          "Stainless Steel Threaded Caps",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Stainless Steel Elbows") {
+        const options = [
+			" ",
+          "Stainless Steel Buttweld Elbows",
+          "Stainless Steel Socket Weld Elbows",
+          "Stainless Steel Swage Lock Elbows",
+          "Stainless Steel Threaded Elbows",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Stainless Steel Reducers") {
+        const options = [
+			" ",
+          "Stainless Steel Buttweld Reducers",
+          "Stainless Steel Socket Weld Reducers",
+          "Stainless Steel Swage Lock Reducers",
+          "Stainless Steel Threaded Reducers",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Stainless Steel Tees") {
+        const options = [
+			" ",
+          "Stainless Steel Buttweld Tees",
+          "Stainless Steel Socket Weld Tees",
+          "Stainless Steel Swage Lock Tees",
+          "Stainless Steel Threaded Tees",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Stainless Steel Flanges") {
+        const options = [
+			" ",
+          "Stainless Steel Blind Flanges",
+          "Stainless Steel Slip-on Flanges",
+          "Stainless Steel Socket Weld Flanges",
+          "Stainless Steel Threaded Flanges",
+          "Stainless Steel Weld Neck Flanges",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Carbon Steel Caps") {
+        const options = [
+			" ",
+          "Carbon Steel Buttweld Caps",
+          "Carbon Steel Socket Weld Caps",
+          "Carbon Steel Swage Lock Caps",
+          "Carbon Steel Threaded Caps",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Carbon Steel Elbows") {
+        const options = [
+			" ",
+          "Carbon Steel Buttweld Elbows",
+          "Carbon Steel Socket Weld Elbows",
+          "Carbon Steel Swage Lock Elbows",
+          "Carbon Steel Threaded Elbows",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Carbon Steel Flanges") {
+        const options = [
+			" ",
+          "Carbon Steel Blind Flanges",
+          "Carbon Steel Slip-on Flanges",
+          "Carbon Steel Socket Weld Flanges",
+          "Carbon Steel Threaded Flanges",
+          "Carbon Steel Weld Neck Flanges",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Carbon Steel Reducers") {
+        const options = [
+			" ",
+          "Carbon Steel Buttweld Reducers",
+          "Carbon Steel Socket Weld Reducers",
+          "Carbon Steel Swage Lock Reducers",
+          "Carbon Steel Threaded Reducers",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Carbon Steel Tees") {
+        const options = [
+			" ",
+          "Carbon Steel Buttweld Tees",
+          "Carbon Steel Socket Weld Tees",
+          "Carbon Steel Swage Lock Tees",
+          "Carbon Steel Threaded Tees",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Electrical Actuated Valves") {
+        const options = [
+			" ",
+          "3 Way Valves",
+          "2 Way Valves",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Pneumatic Actuated Valves") {
+        const options = [
+			" ",
+          "3 Way Valves",
+          "2 Way Valves",
+        ];
+        populateOptions(categoryLevel5Select, options);
+      } else if (categoryLevel4 === "Manual Operated Valves") {
+        const options = [
+			" ",
+          "3 Way Valves",
+          "2 Way Valves",          
+        ];
+        populateOptions(categoryLevel5Select, options);
+      }
+      // Implement other conditions for Category Level 4 if needed
+      updateCategoryLevel6();
+    }
+
+    function updateCategoryLevel6() {
+      const categoryLevel5 = document.getElementById("category-level-5").value;
+      const categoryLevel6Select = document.getElementById("category-level-6");
+
+      // Remove previous options
+      categoryLevel6Select.innerHTML = "";
+
+      // Add new options based on the selected Category Level 5
+      if (categoryLevel5 === "Ball Bearings") {
+        const options = [
+			" ",
+          "Angular Contact",
+          "Deep Groove",
+          "Insert Bearings",
+          "Self-Aligning",
+        ];
+        populateOptions(categoryLevel6Select, options);
+      } else if (categoryLevel5 === "Roller Bearings") {
+        const options = [
+			" ",
+          "Barrel Bearings",
+          "Cylindrical Bearings",
+          "Needle Bearings",
+          "Other Rolling Bearings",
+          "Spherical Bearings",
+          "Tapered Bearings",
+        ];
+        populateOptions(categoryLevel6Select, options);
+      } else if (categoryLevel5 === "Track Rollers") {
+        const options = [
+			" ",
+          "Cam Followers",
+          "Cam Rollers",
+          "Guide Rollers",
+          "Support Rollers",
+        ];
+        populateOptions(categoryLevel6Select, options);
+      }
+      // Implement other conditions for Category Level 5 if needed
+    }
+
+    function populateOptions(selectElement, options) {
+      for (const option of options) {
+        const optionElement = document.createElement("option");
+        optionElement.textContent = option;
+        optionElement.value = option;
+        selectElement.appendChild(optionElement);
+      }
+    }
+
+    // Initial population of Category Level 2
+    updateCategoryLevel2();
+  </script>
+
+            <div class="form-group">
+  <label for="brief-description">
+    <br>
+    <br>
+    Brief Description:<br>
+    <br>
+  </label>
+  <textarea name="brief-description" id="brief-description" class="tiny-editor"></textarea>
+</div>
+
+<div class="form-group">
+  <label for="description"><br>
+    Description:<br>
+    <br>
+  </label>
+  <textarea name="description" id="description" class="tiny-editor"></textarea>
+</div>
+
+<script src="https://cdn.tiny.cloud/1/5ovgfie9r383j4cjjsvth8evxvfo24vb6ub6lb7gpkax3hed/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: ".tiny-editor",
+    height: 300,
+    plugins: "advlist autolink lists link image charmap print preview anchor",
+    toolbar: "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | image",
+    images_upload_url: "/your-upload-handler",
+    images_upload_base_path: "/images",
+    images_upload_credentials: true
+  });
+</script>
+
+
+            <div class="form-group">
+                <label for="tags"><br>
+              Meta Tags:</label>
+                <input type="text" name="tags" id="tags">
+            </div>
+			
+			  <div class="form-group">
+                <label for="metad"><br>
+                Meta Description:</label>
+                <input type="text" name="metad" id="metad">
+          </div>
+			
+		  <div class="form-group">
+                <label for="crossselling"><br>
+                Cross Selling:</label>
+                <input type="text" name="crossselling" id="crossselling">
+            </div>
+			
+
+          <div class="form-group">
+                <label for="image-1"><br>
+                  <br>
+                Image 1:</label>
+                <input type="text" name="image-1" id="image-1">
+            </div>
+
+            <div class="form-group">
+                <label for="image-2"><br>
+                Image 2:</label>
+                <input type="text" name="image-2" id="image-2">
+            </div>
+
+            <div class="form-group">
+                <label for="image-3"><br>
+                Image 3:</label>
+                <input type="text" name="image-3" id="image-3">
+            </div>
+
+            <div class="form-group">
+                <label for="image-4"><br>
+                Image 4:</label>
+                <input type="text" name="image-4" id="image-4">
+            </div>
+
+            <div class="form-group">
+                <label for="image-5"><br>
+                Image 5:</label>
+                <input type="text" name="image-5" id="image-5">
+            </div>
+
+            <div class="form-group">
+                <label for="image-6"><br>
+                Image 6:</label>
+                <input type="text" name="image-6" id="image-6">
+            </div>
+
+            <div class="form-group">
+                <label for="image-7"><br>
+                Image 7:</label>
+                <input type="text" name="image-7" id="image-7">
+            </div>
+
+            <div class="form-group">
+                <label for="image-8"><br>
+                Image 8:</label>
+                <input type="text" name="image-8" id="image-8">
+            </div>
+			
+			   <div class="form-group">
+                <label for="image-9"><br>
+                Image 9:</label>
+                <input type="text" name="image-9" id="image-9">
+            </div>
+			
+			   <div class="form-group">
+                <label for="image-10"><br>
+                Image 10:</label>
+                <input type="text" name="image-10" id="image-10">
+            </div>
+
+            <div id="attribute-fields">
+                <div class="attribute-group">
+                    <label for="attribute-name"><br>
+                     
+                      <br>
+                      Attribute Name:</label>
+                      <select name="attribute-name[]" id="attribute-name[]" class="attribute-name">
+                        <option value=""></option>
+                        <option value="Adjustment">Adjustment</option>
+                        <option value="Alternative Model">Alternative Model</option>
+                        <option value="Alternative Part No.">Alternative Part No.</option>
+                        <option value="Art No.">Art No.</option>
+                        <option value="Axial Spring Stiffness [N/mm]">Axial Spring Stiffness [N/mm]</option>
+                        <option value="Bend">Bend</option>
+                        <option value="Bend Radius [mm]">Bend Radius [mm]</option>
+                        <option value="Block Length L">Block Length L</option>
+                        <option value="Block Type">Block Type</option>
+                        <option value="Block Width W">Block Width W</option>
+                        <option value="Bore Diameter d1/d2 [mm]">Bore Diameter d1/d2 [mm]</option>
+                        <option value="Bore Diameter [mm]">Bore Diameter [mm]</option>
+                        <option value="Brand">Brand</option>
+                        <option value="Cable Length [mm]">Cable Length [mm]</option>
+                        <option value="Compatible Filter">Compatible Filter</option>
+                        <option value="Condition">Condition</option>
+                        <option value="Cone part No.">Cone part No.</option>
+                        <option value="Connection">Connection</option>
+                        <option value="Cup part No.">Cup part No.</option>
+                        <option value="Cutting Flange Width [mm]">Cutting Flange Width [mm]</option>
+                        <option value="Diameter [mm]">Diameter [mm]</option>
+                        <option value="Dimensions [mm]">Dimensions [mm]</option>
+                        <option value="Dynamic Load Rating C">Dynamic Load Rating C</option>
+                        <option value="Encoding Type">Encoding Type</option>
+                        <option value="Fiber Length [mm]">Fiber Length [mm]</option>
+                        <option value="Flange Diameter [mm]">Flange Diameter [mm]</option>
+                        <option value="Flange Length [mm]">Flange Length [mm]</option>
+                        <option value="Flange Thickness [mm]">Flange Thickness [mm]</option>
+                        <option value="Flange Width [mm]">Flange Width [mm]</option>
+                        <option value="Fuse Type">Fuse Type</option>
+                        <option value="Heads Type">Heads Type</option>
+                        <option value="Hole Pitch">Hole Pitch</option>
+                        <option value="Hollow Output [mm]">Hollow Output [mm]</option>
+                        <option value="ID No">ID No</option>
+                        <option value="Inner Diameter [mm]">Inner Diameter [mm]</option>
+                        <option value="Items per Set">Items per Set</option>
+                        <option value="Length [mm]">Length [mm]</option>
+                        <option value="Load Type">Load Type</option>
+                        <option value="Manufacturer">Manufacturer</option>
+                        <option value="Material">Material</option>
+                        <option value="Max. Sensing Range [mm]">Max. Sensing Range [mm]</option>
+                        <option value="Max. Voltage [AC]">Max. Voltage [AC]</option>
+                        <option value="Max. Voltage [AC/DC]">Max. Voltage [AC/DC]</option>
+                        <option value="Max. Voltage [DC]">Max. Voltage [DC]</option>
+                        <option value="Min. Sensing Range [mm]">Min. Sensing Range [mm]</option>
+                        <option value="Min. Voltage [AC]">Min. Voltage [AC]</option>
+                        <option value="Min. Voltage [AC/DC]">Min. Voltage [AC/DC]</option>
+                        <option value="Min. Voltage [DC]">Min. Voltage [DC]</option>
+                        <option value="MNR">MNR</option>
+                        <option value="Model">Model</option>
+                        <option value="Mounting Flange">Mounting Flange</option>
+                        <option value="Mounting Style">Mounting Style</option>
+                        <option value="MPN">MPN</option>
+                        <option value="No. of Pin">No. of Pin</option>
+                        <option value="No. of Wires">No. of Wires</option>
+                        <option value="Nominal Voltage [AC]">Nominal Voltage [AC]</option>
+                        <option value="Nominal Voltage [AC/DC]">Nominal Voltage [AC/DC]</option>
+                        <option value="Nominal Voltage [DC]">Nominal Voltage [DC]</option>
+                        <option value="Nut Length [mm]">Nut Length [mm]</option>
+                        <option value="Nut Outer Diameter [mm]">Nut Outer Diameter [mm]</option>
+                        <option value="Order Code">Order Code</option>
+                        <option value="Order No.">Order No.</option>
+                        <option value="Outer Diameter [mm]">Outer Diameter [mm]</option>
+                        <option value="Output Function">Output Function</option>
+                        <option value="Part No.">Part No.</option>
+                        <option value="PDF">PDF</option>
+                        <option value="Pitch Size">Pitch Size</option>
+                        <option value="Product No.">Product No.</option>
+                        <option value="Radial Spring Stiffness [N/mm]">Radial Spring Stiffness [N/mm]</option>
+                        <option value="Radius">Radius</option>
+                        <option value="Rail Height">Rail Height</option>
+                        <option value="Rail Length">Rail Length</option>
+                        <option value="Rail Width">Rail Width</option>
+                        <option value="Ratio [i]">Ratio [i]</option>
+                        <option value="Receiver Model">Receiver Model</option>
+                        <option value="Reference Code">Reference Code</option>
+                        <option value="Reference No.">Reference No.</option>
+                        <option value="Response Time [ms]">Response Time [ms]</option>
+                        <option value="Shaft Fastening Method">Shaft Fastening Method</option>
+                        <option value="Shaft Input [mm]">Shaft Input [mm]</option>
+                        <option value="Shelf No.">Shelf No.</option>
+                        <option value="Brand">Brand</option>
+                        <option value="Size">Size</option>
+                        <option value="Size of Drill bit">Size of Drill bit</option>
+                        <option value="Successor">Successor</option>
+                        <option value="Switch Output">Switch Output</option>
+                        <option value="Switching Mode">Switching Mode</option>
+                        <option value="Thickness [mm]">Thickness [mm]</option>
+                        <option value="Torque [Nm]">Torque [Nm]</option>
+                        <option value="Torsional Stiffness [Nm/rad]">Torsional Stiffness [Nm/rad]</option>
+                        <option value="Total Height">Total Height</option>
+                        <option value="Transmitter Model">Transmitter Model</option>
+                        <option value="Type of Product">Type of Product</option>
+                        <option value="Valve Operation">Valve Operation</option>
+                        <option value="Wall Thickniss [mm]">Wall Thickniss [mm]</option>
+                        <option value="Spiral Length [mm]">Spiral Length [mm]</option>
+                        <option value="Drill Bit Size [mm]">Drill Bit Size [mm]</option>
+                        <option value="Designation">Designation</option>
+                        <option value="Grade">Grade</option>
+                        <option value="Corner Radius RE [mm]">Corner Radius RE [mm]</option>
+                        <option value="Cutting Edge Effective Length LE [mm]">Cutting Edge Effective Length LE [mm]</option>
+                        <option value="Inscribed Circle Diameter IC [mm]">Inscribed Circle Diameter IC [mm]</option>
+                        <option value="Insert Width W1 [mm]">Insert Width W1 [mm]</option>
+                        <option value="Insert Thickness S [mm]">Insert Thickness S [mm]</option>
+                        <option value="Fixing Hole Diameter D1 [mm]">Fixing Hole Diameter D1 [mm]</option>
+                        <option value="Wiper Edge Length BS [mm]">Wiper Edge Length BS [mm]</option>
+                        <option value="Clearance Angle Major AN [Degree]">Clearance Angle Major AN [Degree]</option>
+                      </select>
+
+                    <label for="attribute-value"><br>
+                    Attribute Value:</label>
+                    <input type="text" name="attribute-value[]" class="attribute-value">
+              </div>
+            </div>
+
+            <div class="add-attribute" id="add-attribute">Add More Attribute</div>
+
+            <button type="submit">Export to CSV</button>
+        </form>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // Add more attribute fields
+                $('#add-attribute').click(function() {
+                    var attributeGroup = $('<div class="attribute-group"></div>');
+                    var attributeName = $('<label for="attribute-name">Attribute Name:</label>');
+                    var attributeNameInput = $('<select name="attribute-name[]" id="attribute-name[]" class="attribute-name"> <option value=""></option> <option value="Adjustment">Adjustment</option> <option value="Alternative Model">Alternative Model</option> <option value="Alternative Part No.">Alternative Part No.</option> <option value="Art No.">Art No.</option> <option value="Axial Spring Stiffness [N/mm]">Axial Spring Stiffness [N/mm]</option> <option value="Bend">Bend</option> <option value="Bend Radius [mm]">Bend Radius [mm]</option> <option value="Block Length L">Block Length L</option> <option value="Block Type">Block Type</option> <option value="Block Width W">Block Width W</option> <option value="Bore Diameter d1/d2 [mm]">Bore Diameter d1/d2 [mm]</option> <option value="Bore Diameter [mm]">Bore Diameter [mm]</option> <option value="Brand">Brand</option> <option value="Cable Length [mm]">Cable Length [mm]</option> <option value="Compatible Filter">Compatible Filter</option> <option value="Condition">Condition</option> <option value="Cone part No.">Cone part No.</option> <option value="Connection">Connection</option> <option value="Cup part No.">Cup part No.</option> <option value="Cutting Flange Width [mm]">Cutting Flange Width [mm]</option> <option value="Diameter [mm]">Diameter [mm]</option> <option value="Dimensions [mm]">Dimensions [mm]</option> <option value="Dynamic Load Rating C">Dynamic Load Rating C</option> <option value="Encoding Type">Encoding Type</option> <option value="Fiber Length [mm]">Fiber Length [mm]</option> <option value="Flange Diameter [mm]">Flange Diameter [mm]</option> <option value="Flange Length [mm]">Flange Length [mm]</option> <option value="Flange Thickness [mm]">Flange Thickness [mm]</option> <option value="Flange Width [mm]">Flange Width [mm]</option> <option value="Fuse Type">Fuse Type</option> <option value="Heads Type">Heads Type</option> <option value="Hole Pitch">Hole Pitch</option> <option value="Hollow Output [mm]">Hollow Output [mm]</option> <option value="ID No">ID No</option> <option value="Inner Diameter [mm]">Inner Diameter [mm]</option> <option value="Items per Set">Items per Set</option> <option value="Length [mm]">Length [mm]</option> <option value="Load Type">Load Type</option> <option value="Manufacturer">Manufacturer</option> <option value="Material">Material</option> <option value="Max. Sensing Range [mm]">Max. Sensing Range [mm]</option> <option value="Max. Voltage [AC]">Max. Voltage [AC]</option> <option value="Max. Voltage [AC/DC]">Max. Voltage [AC/DC]</option> <option value="Max. Voltage [DC]">Max. Voltage [DC]</option> <option value="Min. Sensing Range [mm]">Min. Sensing Range [mm]</option> <option value="Min. Voltage [AC]">Min. Voltage [AC]</option> <option value="Min. Voltage [AC/DC]">Min. Voltage [AC/DC]</option> <option value="Min. Voltage [DC]">Min. Voltage [DC]</option> <option value="MNR">MNR</option> <option value="Model">Model</option> <option value="Mounting Flange">Mounting Flange</option> <option value="Mounting Style">Mounting Style</option> <option value="MPN">MPN</option> <option value="No. of Pin">No. of Pin</option> <option value="No. of Wires">No. of Wires</option> <option value="Nominal Voltage [AC]">Nominal Voltage [AC]</option> <option value="Nominal Voltage [AC/DC]">Nominal Voltage [AC/DC]</option> <option value="Nominal Voltage [DC]">Nominal Voltage [DC]</option> <option value="Nut Length [mm]">Nut Length [mm]</option> <option value="Nut Outer Diameter [mm]">Nut Outer Diameter [mm]</option> <option value="Order Code">Order Code</option> <option value="Order No.">Order No.</option> <option value="Outer Diameter [mm]">Outer Diameter [mm]</option> <option value="Output Function">Output Function</option> <option value="Part No.">Part No.</option> <option value="PDF">PDF</option> <option value="Pitch Size">Pitch Size</option> <option value="Product No.">Product No.</option> <option value="Radial Spring Stiffness [N/mm]">Radial Spring Stiffness [N/mm]</option> <option value="Radius">Radius</option> <option value="Rail Height">Rail Height</option> <option value="Rail Length">Rail Length</option> <option value="Rail Width">Rail Width</option> <option value="Ratio [i]">Ratio [i]</option> <option value="Receiver Model">Receiver Model</option> <option value="Reference Code">Reference Code</option> <option value="Reference No.">Reference No.</option> <option value="Response Time [ms]">Response Time [ms]</option> <option value="Shaft Fastening Method">Shaft Fastening Method</option> <option value="Shaft Input [mm]">Shaft Input [mm]</option> <option value="Shelf No.">Shelf No.</option> <option value="Brand">Brand</option> <option value="Size">Size</option> <option value="Size of Drill bit">Size of Drill bit</option> <option value="Successor">Successor</option> <option value="Switch Output">Switch Output</option> <option value="Switching Mode">Switching Mode</option> <option value="Thickness [mm]">Thickness [mm]</option> <option value="Torque [Nm]">Torque [Nm]</option> <option value="Torsional Stiffness [Nm/rad]">Torsional Stiffness [Nm/rad]</option> <option value="Total Height">Total Height</option> <option value="Transmitter Model">Transmitter Model</option> <option value="Type of Product">Type of Product</option> <option value="Valve Operation">Valve Operation</option> <option value="Wall Thickniss [mm]">Wall Thickniss [mm]</option> <option value="Spiral Length [mm]">Spiral Length [mm]</option> <option value="Drill Bit Size [mm]">Drill Bit Size [mm]</option> <option value="Designation">Designation</option> <option value="Grade">Grade</option> <option value="Corner Radius RE [mm]">Corner Radius RE [mm]</option> <option value="Cutting Edge Effective Length LE [mm]">Cutting Edge Effective Length LE [mm]</option> <option value="Inscribed Circle Diameter IC [mm]">Inscribed Circle Diameter IC [mm]</option> <option value="Insert Width W1 [mm]">Insert Width W1 [mm]</option> <option value="Insert Thickness S [mm]">Insert Thickness S [mm]</option> <option value="Fixing Hole Diameter D1 [mm]">Fixing Hole Diameter D1 [mm]</option> <option value="Wiper Edge Length BS [mm]">Wiper Edge Length BS [mm]</option> <option value="Clearance Angle Major AN [Degree]">Clearance Angle Major AN [Degree]</option> </select>');
+                    var attributeValue = $('<label for="attribute-value">Attribute Value:</label>');
+                    var attributeValueInput = $('<input type="text" name="attribute-value[]" class="attribute-value">');
+
+                    attributeGroup.append(attributeName, attributeNameInput, attributeValue, attributeValueInput);
+                    $('#attribute-fields').append(attributeGroup);
+                });
+
+                // Form submit event
+                $('#product-form').submit(function(event) {
+                  console.log("asd")
+                    event.preventDefault(); // Prevent default form behavior
+
+                    // Collect form data
+                    var formData = $(this).serializeArray();
+
+                    // Create CSV header line
+                    var csvContent = "SKU,Product Name,MPN,Manufacturer,Quantity,Weight,Category Level 1,Category Level 2,Category Level 3,Category Level 4,Category Level 5,Category Level 6,Category Level 7,Brief Description,Description,Meta Tags,Meta Description,Cross Selling,Image 1,Image 2,Image 3,Image 4,Image 5,Image 6,Image 7,Image 8,Image 9,Image 10,Attribute Name,Attribute Value\n";
+
+                    // Create CSV data lines
+                    var csvData = "";
+
+                    var attributeNameInputs = $('.attribute-name');
+                    var attributeValueInputs = $('.attribute-value');
+
+                    var rowCount = Math.max(attributeNameInputs.length, attributeValueInputs.length);
+					
+ 						var sku = formData.find(field => field.name === 'sku').value.replace(/"/g, '""');
+                        var productName = formData.find(field => field.name === 'product-name').value.replace(/"/g, '""');
+                        var mpn = formData.find(field => field.name === 'mpn').value.replace(/"/g, '""');
+                        var manufacturer = formData.find(field => field.name === 'manufacturer').value.replace(/"/g, '""');
+                        var quantity = formData.find(field => field.name === 'quantity').value.replace(/"/g, '""');
+                        var weight = formData.find(field => field.name === 'weight').value.replace(/"/g, '""');
+                        var categoryLevel1 = formData.find(field => field.name === 'category-level-1').value.replace(/"/g, '""');
+                        var categoryLevel2 = formData.find(field => field.name === 'category-level-2').value.replace(/"/g, '""');
+                        var categoryLevel3Field = formData.find(field => field.name === 'category-level-3');
+                        var categoryLevel3 = categoryLevel3Field ? formData.find(field => field.name === 'category-level-3').value.replace(/"/g, '""') : '';
+                        var categoryLevel4Field = formData.find(field => field.name === 'category-level-4');
+                        var categoryLevel4 = categoryLevel4Field ? formData.find(field => field.name === 'category-level-4').value.replace(/"/g, '""') : '';
+                        var categoryLevel5Field = formData.find(field => field.name === 'category-level-5');
+                        var categoryLevel5 = categoryLevel5Field ? formData.find(field => field.name === 'category-level-5').value.replace(/"/g, '""') : '';
+                        var categoryLevel6Field = formData.find(field => field.name === 'category-level-6');
+                        var categoryLevel6 = categoryLevel6Field ? formData.find(field => field.name === 'category-level-6').value.replace(/"/g, '""') : '';
+                        var categoryLevel7Field = formData.find(field => field.name === 'category-level-7');
+                        var categoryLevel7 = categoryLevel7Field ? formData.find(field => field.name === 'category-level-7').value.replace(/"/g, '""') : '';
+                        var briefDescription = formData.find(field => field.name === 'brief-description').value.replace(/"/g, '""');
+                        var description = formData.find(field => field.name === 'description').value.replace(/"/g, '""');
+                        var tags = formData.find(field => field.name === 'tags').value.replace(/"/g, '""');
+				    	var metad = formData.find(field => field.name === 'metad').value.replace(/"/g, '""');
+					    var crossselling = formData.find(field => field.name === 'crossselling').value.replace(/"/g, '""');
+                        var image1 = formData.find(field => field.name === 'image-1').value.replace(/"/g, '""');
+                        var image2 = formData.find(field => field.name === 'image-2').value.replace(/"/g, '""');
+                        var image3 = formData.find(field => field.name === 'image-3').value.replace(/"/g, '""');
+                        var image4 = formData.find(field => field.name === 'image-4').value.replace(/"/g, '""');
+                        var image5 = formData.find(field => field.name === 'image-5').value.replace(/"/g, '""');
+                        var image6 = formData.find(field => field.name === 'image-6').value.replace(/"/g, '""');
+                        var image7 = formData.find(field => field.name === 'image-7').value.replace(/"/g, '""');
+                        var image8 = formData.find(field => field.name === 'image-8').value.replace(/"/g, '""');
+					    var image9 = formData.find(field => field.name === 'image-9').value.replace(/"/g, '""');
+					    var image10 = formData.find(field => field.name === 'image-10').value.replace(/"/g, '""');
+
+                        var attributeName = (attributeNameInputs[0] ? attributeNameInputs[0].value.replace(/"/g, '""') : "");
+                        var attributeValue = (attributeValueInputs[0] ? attributeValueInputs[0].value.replace(/"/g, '""') : "");
+					    
+                    
+
+                        csvData += '"' + sku + '","' + productName + '","' + mpn + '","' + manufacturer + '","' + quantity + '","' + weight + '","' + categoryLevel1 + '","' + categoryLevel2 + '","' + categoryLevel3 + '","' + categoryLevel4 + '","' + categoryLevel5 + '","' + categoryLevel6 + '","' + categoryLevel7 + '","' + briefDescription + '","' + description + '","' + tags + '","' + metad + '","' + crossselling + '","' + image1 + '","' + image2 + '","' + image3 + '","' + image4 + '","' + image5 + '","' + image6 + '","' + image7 + '","' + image8 + '","' + image9 + '","' + image10 + '","' + attributeName + '","' + attributeValue + '"\n';
+                    
+				
+				for (var i = 1; i < rowCount; i++) {
+					   var attributeName2 = (attributeNameInputs[i] ? attributeNameInputs[i].value.replace(/"/g, '""') : "");
+                        var attributeValue2 = (attributeValueInputs[i] ? attributeValueInputs[i].value.replace(/"/g, '""') : "");
+					
+					
+					csvData += '"' + sku + '","' + "" + '","' + "" + '","' + "" + '","' + quantity + '","' + weight + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + '","' + "" + '","' + "" + '","' + "" + '","' + "" + '","' + attributeName2 + '","' + attributeValue2 + '"\n';
+					
+				}
+
+                    // Create a temporary link element to trigger the file download
+                    var link = document.createElement("a");
+                    link.setAttribute("href", "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent + csvData));
+                    link.setAttribute("download", "product_data.csv");
+                    link.style.display = "none";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
