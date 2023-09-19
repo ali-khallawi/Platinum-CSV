@@ -300,7 +300,10 @@
             "Steam Systems",
         ];
         populateOptions(categoryLevel2Select, options);
-      }
+      } else if (categoryLevel1 === "") {
+        const options = [""];
+        populateOptions(categoryLevel2Select, options);
+        }
       // Implement other conditions for Category Level 1 if needed
       updateCategoryLevel3();
     }
