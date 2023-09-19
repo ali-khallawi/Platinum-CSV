@@ -125,8 +125,32 @@
             <div class="form-group">
                 <label for="weight"><br>
                 Weight:</label>
-                <input type="text" name="weight" id="weight">
+                <input type="text" name="weight" id="weight" oninput="checkForDot()">
+                <!-- Div to display warning message -->
+                <div id="warning" style="color: red;"></div>
             </div>
+            <script>
+              // Function to check the input value and display a warning message
+              function checkForDot() {
+                  // Get the input field using its ID "weight"
+                  var weight = document.getElementById("weight");
+                  
+                  // Get the div element that will display the warning message using its ID "warning"
+                  var warning = document.getElementById("warning");
+                  
+                  // Get the value entered in the input field and store it in "inputValue"
+                  var inputValue = weight.value;
+          
+                  // Check if the value contains a dot
+                  if (inputValue.includes(".")) {
+                      // If a dot is found, display a warning message in red inside the div
+                      warning.textContent = "The value contains a dot \".\" !";
+                  } else {
+                      // If there is no dot, clear the warning message
+                      warning.textContent = "";
+                  }
+              }
+            </script>
 			
   <div class="form-group">
     <label for="category-level-1"><br>Category Level 1:</label>
