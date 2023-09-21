@@ -125,29 +125,43 @@
             <div class="form-group">
                 <label for="weight"><br>
                 Weight:</label>
-                <input type="text" name="weight" id="weight" oninput="checkForDot()">
+                <input type="text" name="weight" id="weight" oninput="checkForDotAndDecimalPlaces()">
                 <!-- Div to display warning message -->
                 <div id="warning" style="color: red;"></div>
             </div>
             <script>
-              // Function to check the input value and display a warning message
-              function checkForDot() {
+              // Function to check the input value for dot and decimal places
+              function checkForDotAndDecimalPlaces() {
                   // Get the input field using its ID "weight"
                   var weight = document.getElementById("weight");
-                  
-                  // Get the div element that will display the warning message using its ID "warning"
+          
+                  // Get the div element that will display the warning messages using its ID "warning"
                   var warning = document.getElementById("warning");
-                  
+          
                   // Get the value entered in the input field and store it in "inputValue"
                   var inputValue = weight.value;
           
-                  // Check if the value contains a dot
+                  // Initialize a flag to check for decimal places
+                  var hasDecimalPlaces = false;
+          
+                  // Check if the value contains a dot (.)
                   if (inputValue.includes(".")) {
-                      // If a dot is found, display a warning message in red inside the div
-                      warning.textContent = "This value contains a dot \".\" !";
+                      // If a dot is found, display a warning message
+                      warning.textContent = "Please avoid using a dot \".\"!";
                   } else {
                       // If there is no dot, clear the warning message
                       warning.textContent = "";
+          
+                      // Check for decimal places (digits after a comma ,)
+                      var decimalPlaces = inputValue.split(",")[1];
+                      if (decimalPlaces && decimalPlaces.length > 2) {
+                          hasDecimalPlaces = true;
+                      }
+                  }
+          
+                  // Check for additional warning about decimal places
+                  if (hasDecimalPlaces) {
+                      warning.textContent += " Please do not exceed 2 decimal places.";
                   }
               }
             </script>
