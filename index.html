@@ -4,12 +4,16 @@
 <link rel="icon" type="image/png" href="https://platinum-international.store/wp-content/uploads/2023/09/favicon.png"/>
     <title>Product to CSV</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-        }
+	    body {
+		    font-family: Arial, sans-serif;
+		    background-image: url('https://platinum-international.store/wp-content/uploads/2023/09/background-csv-1.jpg');
+		    background-size: cover; /* Optional: to cover the entire screen with the image */
+		    background-repeat: no-repeat; /* Optional: to prevent image repetition */
+		    background-attachment: fixed; /* Make the background fixed */
+		    background-position: center; /* Optional: to center the image on the page */
+		    margin: 0;
+		    padding: 20px;
+	    }
 
         h1 {
             color: #333;
@@ -17,14 +21,25 @@
             margin-bottom: 20px;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+	    .container {
+		    max-width: 600px;
+		    margin: 0 auto;
+		    background-color: rgba(245, 245, 245, 0.37); /* Semi-transparent background color */
+		    padding: 20px;
+		    border-radius: 5px;
+		    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+		    backdrop-filter: blur(10px); /* Apply a blur effect to the element itself */
+	    }
+	    
+	    footer {
+		    padding: 20px;
+	    }
+	    .footer-content {
+		    background-color: rgba(245, 245, 245, 0.37); /* Semi-transparent and slightly lighter background color */
+		    border-radius: 5px;
+		    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+		    backdrop-filter: blur(10px); /* Apply a blur effect to the element itself */
+	    }
 
         form {
             margin-bottom: 20px;
@@ -76,8 +91,9 @@
 		
 		
         .add-attribute {
-            color: #888;
-            text-decoration: underline;
+            color: #6d6d6d;
+            -webkit-text-stroke: 0.3px black;
+            text-decoration: underline #6d6d6d;
             cursor: pointer;
             margin-bottom: 10px;
         }
@@ -174,7 +190,7 @@
     </select>
   </div>
 
-  <div class="form-group">
+  <!--<div class="form-group">
     <label for="category-level-2"><br>Category Level 2:</label>
     <select name="category-level-2" id="category-level-2" onchange="updateCategoryLevel3()">
       <option value=""></option>
@@ -217,6 +233,14 @@
       <option value="Videojet Spare Parts">Videojet Spare Parts</option>
       <option value="Wire Ropes">Wire Ropes</option>
       <option value="Work Shop">Work Shop</option>
+    </select>
+  </div>-->
+
+<div class="form-group">
+    <label for="category-level-2"><br>Category Level 2:</label>
+    <select name="category-level-2" id="category-level-2" onchange="updateCategoryLevel3()">
+      <option value=""></option>
+      <!-- Options for Category Level 2 will be populated dynamically based on the selection of Category Level 2 -->
     </select>
   </div>
 
@@ -1317,7 +1341,9 @@
         </script>
     </div>
 	<footer>
-		<p class="MsoNormal" style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; line-height: normal;"><span style="font-size: 12.0pt; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: Calibri; mso-bidi-theme-font: minor-latin; mso-font-kerning: 0pt; mso-ligatures: none;">Copyright &copy; 2023 <span style="color: #236597;"><a href="https://platinum-international.store/">platinum-international.store </a></span><span style="mso-spacerun: yes;">&nbsp;</span>| <span style="mso-spacerun: yes;">&nbsp;</span><em>Powered by <span style="color: #236597;">Ali Khallawi</span></em></span></p>
+		<div class="footer-content">
+			<p>Copyright &copy; 2023 <a href="https://platinum-international.store/">platinum-international.store | </a><em>Powered by <span style="color: #236597;">Ali Khallawi</span></em></p>
+		</div>
 	</footer>
 </body>
 </html>
