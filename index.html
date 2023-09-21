@@ -956,62 +956,123 @@
                 <label for="image-1"><br>
                   <br>
                 Image 1:</label>
-                <input type="text" name="image-1" id="image-1">
-            </div>
+                <input type="text" name="image-1" id="image-1" oninput="checkForSpace('image-1')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-1" style="color: red;"></div>
+          </div>
 
-            <div class="form-group">
+          <br> <!-- Add a line break for separation -->
+
+          <div class="form-group">
                 <label for="image-2"><br>
                 Image 2:</label>
-                <input type="text" name="image-2" id="image-2">
-            </div>
+                <input type="text" name="image-2" id="image-2" oninput="checkForSpace('image-2')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-2" style="color: red;"></div>
+          </div>
 
-            <div class="form-group">
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-3"><br>
                 Image 3:</label>
-                <input type="text" name="image-3" id="image-3">
-            </div>
+                <input type="text" name="image-3" id="image-3" oninput="checkForSpace('image-3')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-3" style="color: red;"></div>
+          </div>
 
-            <div class="form-group">
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-4"><br>
                 Image 4:</label>
-                <input type="text" name="image-4" id="image-4">
-            </div>
+                <input type="text" name="image-4" id="image-4" oninput="checkForSpace('image-4')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-4" style="color: red;"></div>
+          </div>
 
-            <div class="form-group">
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-5"><br>
                 Image 5:</label>
-                <input type="text" name="image-5" id="image-5">
-            </div>
+                <input type="text" name="image-5" id="image-5" oninput="checkForSpace('image-5')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-5" style="color: red;"></div>
+          </div>
 
-            <div class="form-group">
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-6"><br>
                 Image 6:</label>
-                <input type="text" name="image-6" id="image-6">
-            </div>
+                <input type="text" name="image-6" id="image-6" oninput="checkForSpace('image-6')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-6" style="color: red;"></div>
+          </div>
 
-            <div class="form-group">
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-7"><br>
                 Image 7:</label>
-                <input type="text" name="image-7" id="image-7">
-            </div>
+                <input type="text" name="image-7" id="image-7" oninput="checkForSpace('image-7')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-7" style="color: red;"></div>
+          </div>
 
-            <div class="form-group">
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-8"><br>
                 Image 8:</label>
-                <input type="text" name="image-8" id="image-8">
-            </div>
-			
-			   <div class="form-group">
+                <input type="text" name="image-8" id="image-8" oninput="checkForSpace('image-8')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-8" style="color: red;"></div>
+          </div>
+
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-9"><br>
                 Image 9:</label>
-                <input type="text" name="image-9" id="image-9">
-            </div>
-			
-			   <div class="form-group">
+                <input type="text" name="image-9" id="image-9" oninput="checkForSpace('image-9')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-9" style="color: red;"></div>
+          </div>
+
+          <br> <!-- Add a line break for separation -->
+          
+          <div class="form-group">
                 <label for="image-10"><br>
                 Image 10:</label>
-                <input type="text" name="image-10" id="image-10">
-            </div>
+                <input type="text" name="image-10" id="image-10" oninput="checkForSpace('image-10')">
+            <!-- Div to display warning message -->
+            <div id="warning-image-10" style="color: red;"></div>
+          </div>
+
+            <script>
+              // Function to check the input value and display a warning message
+              function checkForSpace(inputId) {
+                  // Get the input field using its ID
+                  var inputField = document.getElementById(inputId);
+                  
+                  // Get the div element that will display the warning message using its corresponding ID
+                  var warning = document.getElementById("warning-" + inputId);
+                  
+                  // Get the value entered in the input field and store it in "inputValue"
+                  var inputValue = inputField.value;
+      
+                  // Check if the value contains a space
+                  if (inputValue.includes(" ")) {
+                      // If a space is found, display the warning message inside the div
+                      warning.textContent = "The value contains a space!";
+                  } else {
+                      // If there is no space, clear the warning message
+                      warning.textContent = "";
+                  }
+              }
+            </script>
 
             <div id="attribute-fields">
                 <div class="attribute-group">
