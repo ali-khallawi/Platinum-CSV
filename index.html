@@ -1363,27 +1363,8 @@
 								      '<option value="New">New</option>' +
 								      '<option value="Used">Used</option>' +
 								      '</select>'));
-			    } else if (selectedOption === "Shelf No.") {
-				    // Replace the input field with a dropdown for "Shelf No."
-				    attributeValueInput.replaceWith($('<select name="attribute-value[]" class="attribute-value">' +
-								      '<option value=""></option>' +
-								      '<option value="230903">230903</option>' +
-								      '<option value="230904">230904</option>' +
-								      '<option value="230905">230905</option>' +
-								      '<option value="230906">230906</option>' +
-								      '<option value="230907">230907</option>' +
-								      '<option value="230908">230908</option>' +
-								      '<option value="230911">230911</option>' +
-								      '<option value="230913">230913</option>' +
-								      '<option value="230915">230915</option>' +
-								      '<option value="230918">230918</option>' +
-								      '<option value="230920">230920</option>' +
-								      '<option value="230921">230921</option>' +
-								      '<option value="230922">230922</option>' +
-								      '<option value="230923">230923</option>' +
-								      '</select>'));
 			    } else {
-				    // If not "Condition" or "Shelf No.," revert to the text input field
+				    // If not "Condition," revert to the text input field
 				    attributeValueInput.replaceWith($('<input type="text" name="attribute-value[]" class="attribute-value">'));
 			    }
 		    });
