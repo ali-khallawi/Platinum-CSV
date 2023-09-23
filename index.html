@@ -1269,6 +1269,24 @@
                     $('#attribute-fields').append(attributeGroup);
                 });
 
+		    // Check if the selected attribute-name is "Condition"
+		    $(document).on('change', '.attribute-name', function() {
+			    var selectedOption = $(this).val();
+			    var attributeValueInput = $(this).closest('.attribute-group').find('.attribute-value');
+			    
+			    if (selectedOption === "Condition") {
+				    // Replace the input field with a dropdown
+				    attributeValueInput.replaceWith($('<select name="attribute-value[]" class="attribute-value">' +
+								      '<option value=""></option>' +
+								      '<option value="New">New</option>' +
+								      '<option value="Used">Used</option>' +
+								      '</select>'));
+			    } else {
+				    // If not "Condition," revert to the text input field
+				    attributeValueInput.replaceWith($('<input type="text" name="attribute-value[]" class="attribute-value">'));
+			    }
+		    });
+
                 // Form submit event
                 $('#product-form').submit(function(event) {
                   console.log("asd")
