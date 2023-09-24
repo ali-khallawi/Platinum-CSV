@@ -1267,8 +1267,40 @@
                     var attributeValue = $('<label for="attribute-value">Attribute Value:</label>');
                     var attributeValueInput = $('<input type="text" name="attribute-value[]" class="attribute-value">');
 
-                    attributeGroup.append(attributeName, attributeNameInput, attributeValue, attributeValueInput);
+                    // Create a delete button with custom styling
+                    var deleteButton = $('<button class="delete-attribute">X</button>');
+                    deleteButton.css({
+                      'background-color': 'rgba(255, 255, 255, 0.5)', // White with semi-transparent background
+                      'color': 'gray', // Gray text color
+                      'transition': 'background-color 0.3s, color 0.3s' // Smooth background color and text color transition
+                    });
+                    
+                    // Change the button's background color to red and text color to white when hovered
+                    deleteButton.hover(
+                      function() {
+                        $(this).css({
+                          'background-color': 'red',
+                          'color': 'white'
+                        });
+                      },
+                      function() {
+                        $(this).css({
+                          'background-color': 'rgba(255, 255, 255, 0.5)',
+                          'color': 'gray'
+                        });
+                      }
+                      );
+
+                    // Append all the elements to the "attributeGroup" div
+                    attributeGroup.append(attributeName, attributeNameInput, attributeValue, attributeValueInput, deleteButton);
+
+                    // Append the "attributeGroup" to the container with the ID "attribute-fields"
                     $('#attribute-fields').append(attributeGroup);
+
+                    // Add a click event handler to the delete button for removing the attribute
+                    deleteButton.click(function() {
+                      attributeGroup.remove();
+                    });
                 });
 
                 // Form submit event
