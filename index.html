@@ -177,6 +177,9 @@
                   if (inputValue.includes(".")) {
                       // If a dot is found, display a warning message
                       warning.textContent = "Please avoid using a dot \".\"!";
+                  } else if (inputValue.includes(" ")){
+                    // If a space is found, display the warning message inside the div
+                    warning.textContent = "The value contains a space!";
                   } else {
                       // If there is no dot, clear the warning message
                       warning.textContent = "";
