@@ -146,7 +146,6 @@
 			img.src = url;
 			img.onload = () => {
 				document.body.style.backgroundImage = `url(${url})`;
-				currentIndex = (currentIndex + 1) % images.length;
 			};
 		}
 		
