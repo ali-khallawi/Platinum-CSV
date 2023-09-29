@@ -102,11 +102,19 @@
 		
 		
         .add-attribute {
-            color: #27d92f;
-            -webkit-text-stroke: 0.05px black;
-            text-decoration: underline #888;
-            cursor: pointer;
-            margin-bottom: 10px;
+          display: inline-block;
+          padding: 3px 6px;
+          background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+          color: gray; /* Gray text color */
+          cursor: pointer;
+          border: none; /* Remove borders */
+          border-radius: 4.5px; /* Apply smooth edges without corners */
+          transition: background 0.3s, color 0.3s; /* Smooth background and text color transition */
+        }
+        
+        .add-attribute:hover {
+          background: #4caf50; /* Green color on hover */
+          color: white; /* White text color on hover */
         }
 		
 		
@@ -1305,6 +1313,8 @@
             </div>
 
             <div class="add-attribute" id="add-attribute">Add More Attribute</div>
+
+		<div style="visibility: hidden;">""</div>
 
             <button type="submit">Export to CSV</button>
         </form>
