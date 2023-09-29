@@ -6,13 +6,13 @@
     <style>
 	    body {
 		    font-family: Arial, sans-serif;
-		    background-image: url('https://platinum-international.store/wp-content/uploads/2023/09/background-csv-1.jpg');
 		    background-size: cover; /* Optional: to cover the entire screen with the image */
 		    background-repeat: no-repeat; /* Optional: to prevent image repetition */
 		    background-attachment: fixed; /* Make the background fixed */
 		    background-position: center; /* Optional: to center the image on the page */
 		    margin: 0;
 		    padding: 20px;
+		    transition: background-image 1s ease-in-out; /* Image fade effect */
 	    }
 
 	    ::-webkit-scrollbar {
@@ -114,6 +114,54 @@
 	
 </head>
 <body>
+	<script>
+		// List of background images to cycle through
+		const images = [
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-1.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-2.jpg', // Replace with the URL of your second image
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-3.jpg',   // Replace with the URL of your third image, and so on
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-4.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-5.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-6.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-7.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-8.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-9.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-10.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-11.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-12.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-13.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-14.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-15.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-16.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-17.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-18.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-19.jpg',
+			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-20.jpg',
+		];
+		let currentIndex = 0;
+		
+		// Function to change the background image
+		function preloadImage(url) {
+			const img = new Image();
+			img.src = url;
+			img.onload = () => {
+				document.body.style.backgroundImage = `url(${url})`;
+				currentIndex = (currentIndex + 1) % images.length;
+			};
+		}
+		
+		// Preload the first image when the page loads
+		preloadImage(images[currentIndex]);
+		
+		function changeBackground() {
+			currentIndex = (currentIndex + 1) % images.length;
+			preloadImage(images[currentIndex]);
+		}
+		
+		// Change the background every hour (or as per your specified time)
+		setInterval(changeBackground, 600000); // milliseconds equals one hour, seconds= 1000 milliseconds
+	</script>
+	
     <div class="container">
 	    <a href="https://platinum-international.store/">
 		    <img src="https://platinum-international.store/wp-content/uploads/2023/09/LogoCSV.png"
