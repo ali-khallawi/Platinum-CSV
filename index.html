@@ -657,6 +657,13 @@
           "Valves",
         ];
         populateOptions(categoryLevel3Select, options);
+      } else if (categoryLevel2 === "Pumps") {
+        const options = [
+		" ",
+		"Centrifugal Pumps",
+		"Vacuum Pumps",
+        ];
+        populateOptions(categoryLevel3Select, options);
       }
       // Implement other conditions for Category Level 2 if needed
       updateCategoryLevel4();
