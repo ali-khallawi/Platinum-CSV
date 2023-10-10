@@ -118,8 +118,22 @@
           background: #4caf50; /* Green color on hover */
           color: white; /* White text color on hover */
         }
-		
-		
+
+	/* Define the CSS attribute of the logo so that it is initially hidden */
+	#logo {
+	display: none;
+	opacity: 0;
+	transform: scale(0.1);
+	transition: opacity 1s, transform 1s;
+	}
+	
+	/* Define the popup design */
+    	#logo.is-visible {
+      	display: block;
+      	opacity: 1;
+      	transform: scale(1);
+    	}
+	    
     </style>
 	
 </head>
@@ -172,10 +186,20 @@
 	</script>
 	
     <div class="container">
-	    <a href="https://platinum-international.store/">
-		    <img src="https://platinum-international.store/wp-content/uploads/2023/09/LogoCSV.png"
-			    style="display: block; margin-left: auto; margin-right: auto;" />
-	    </a>
+	    <div id="logo-container">
+		    <a href="https://platinum-international.store/" id="logo-link">
+			    <img src="https://platinum-international.store/wp-content/uploads/2023/09/LogoCSV.png" id="logo"
+				    style="display: block; margin-left: auto; margin-right: auto;" />
+		    </a>
+	    </div>
+    <script>
+      // Wait for the page to load completely
+      window.addEventListener('load', function () {
+        // Add the 'is-visible' class to the logo to trigger the effect immediately
+        document.getElementById('logo').classList.add('is-visible');
+      });
+
+    </script>
         <h1>Platinum Product to CSV</h1>
         <form id="product-form">
             <!-- Form fields here -->
