@@ -597,6 +597,10 @@
           <option value="Cam Rollers">Cam Rollers</option>
           <option value="Guide Rollers">Guide Rollers</option>
           <option value="Support Rollers">Support Rollers</option>
+	  <option value="Fluid Controls">Fluid Controls</option>
+          <option value="Water and Steam Systems">Water and Steam Systems</option>
+          <option value="Water and Steam Systems Flow Control">Water and Steam Systems Flow Control</option>
+          <option value="Flow Meter">Flow Meter</option>
         </select>
       </div>
 
@@ -3115,6 +3119,38 @@
             document.getElementById('category-level-4').innerHTML = '<option value="Radial Bearings ">Radial Bearings </option>';
             document.getElementById('category-level-5').innerHTML = '<option value="Track Rollers ">Track Rollers </option>';
             document.getElementById('category-level-6').innerHTML = '<option value="Support Rollers">Support Rollers</option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+          } else if (categoryMappingValue === 'Fluid Controls') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Fluid Controls">Fluid Controls</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-4').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (categoryMappingValue === 'Water and Steam Systems') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Fluid Controls">Fluid Controls</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Water and Steam Systems">Water and Steam Systems</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (categoryMappingValue === 'Water and Steam Systems Flow Control') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Fluid Controls">Fluid Controls</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Water and Steam Systems">Water and Steam Systems</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="Water and Steam Systems Flow Control">Water and Steam Systems Flow Control</option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (categoryMappingValue === 'Flow Meter') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Fluid Controls">Fluid Controls</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Water and Steam Systems">Water and Steam Systems</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="Water and Steam Systems Flow Control">Water and Steam Systems Flow Control</option>';
+            document.getElementById('category-level-5').innerHTML = '<option value="Flow Meter">Flow Meter</option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
           } else {
             //Reset category level values if you enter an unexpected value.
