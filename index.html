@@ -3388,9 +3388,9 @@
                 } else if (!(inputValue.includes("new") || inputValue.includes("used"))) {
                     // If the value doesn't contain "new" or "used" (in any case), display a different error message
                     warning.textContent = "The value must contain 'new' or 'used'!";
-                } else if (inputValue.includes("+") || inputValue.includes("°") || inputValue.includes("/") || inputValue.includes("\\") || inputValue.includes(",") || inputValue.includes("`") || inputValue.includes("'") || inputValue.includes("–") || inputValue.includes("*") || inputValue.includes("µ")) {
+                } else if (inputValue.includes("+") || inputValue.includes("°") || inputValue.includes("/") || inputValue.includes("\\") || inputValue.includes(",") || inputValue.includes("`") || inputValue.includes("'") || inputValue.includes("–") || inputValue.includes("*") || inputValue.includes("µ") || inputValue.includes("—")) {
                     // If the value contains special characters (in any case), display a different error message
-                    warning.textContent = "The value contains special characters \" +,°,\\,/,' \" !, –, µ, *";
+                    warning.textContent = "The value contains special characters \" +,°,\\,/,' \" !, –, µ, —, *";
                 } else {
                     // If it contains "new" or "used" (in any case) and no space, clear the warning message
                     warning.textContent = "";
