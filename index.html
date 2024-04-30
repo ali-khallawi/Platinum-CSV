@@ -634,6 +634,7 @@
             <a href="#Flow Meter" onclick="selectCategory(this)">Flow Meter</a>
 	    <a href="#Electric Actuator" onclick="selectCategory(this)">Electric Actuator</a>
             <a href="#Electric Rotary Actuator" onclick="selectCategory(this)">Electric Rotary Actuator</a>
+	    <a href="#Guide Actuators" onclick="selectCategory(this)">Guide Actuators</a>
             
           </div>
       </div>
@@ -3293,6 +3294,14 @@
             document.getElementById('category-level-2').innerHTML = '<option value="Electric Actuator">Electric Actuator</option>';
             document.getElementById('category-level-3').innerHTML = '<option value="Electric Rotary Actuator">Electric Rotary Actuator</option>';
             document.getElementById('category-level-4').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'Guide Actuators') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Pneumatic System">Pneumatic System</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Pneumatic Actuators">Pneumatic Actuators</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="Guide Actuators">Guide Actuators</option>';
             document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
