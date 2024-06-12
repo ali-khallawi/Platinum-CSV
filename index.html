@@ -635,6 +635,7 @@
 	    <a href="#Electric Actuator" onclick="selectCategory(this)">Electric Actuator</a>
             <a href="#Electric Rotary Actuator" onclick="selectCategory(this)">Electric Rotary Actuator</a>
 	    <a href="#Guide Actuators" onclick="selectCategory(this)">Guide Actuators</a>
+            <a href="#ISO Cylinder" onclick="selectCategory(this)">ISO Cylinder</a>
             
           </div>
       </div>
@@ -3302,6 +3303,14 @@
             document.getElementById('category-level-2').innerHTML = '<option value="Pneumatic System">Pneumatic System</option>';
             document.getElementById('category-level-3').innerHTML = '<option value="Pneumatic Actuators">Pneumatic Actuators</option>';
             document.getElementById('category-level-4').innerHTML = '<option value="Guide Actuators">Guide Actuators</option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'ISO Cylinder') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Pneumatic System">Pneumatic System</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Pneumatic Actuators">Pneumatic Actuators</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="ISO Cylinder">ISO Cylinder</option>';
             document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
