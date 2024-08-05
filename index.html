@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://platinum-international.store/wp-content/uploads/2023/09/favicon.png"/>
     <title>Product to CSV</title>
     <style>
@@ -3903,5 +3904,24 @@
                 width="17" height="17"></em></p>
         </div>
       </footer>
+
+    <script>
+        fetch('your-script.js')
+            .then(response => response.text())
+            .then(script => {
+                const scriptElement = document.createElement('script');
+                scriptElement.text = script;
+                document.head.appendChild(scriptElement);
+            });
+    </script>
+    
+    <script>
+      document.onkeydown = function (e) {
+        if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0))) {
+          return false;
+        }
+      }
+    </script>
+	
 </body>
 </html>
