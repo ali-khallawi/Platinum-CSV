@@ -640,6 +640,7 @@
             <a href="#Guide Elements Bearings" onclick="selectCategory(this)">Guide Elements Bearings</a>
             <a href="#Guide Elements Ball Cages" onclick="selectCategory(this)">Guide Elements Ball Cages</a>
             <a href="#Integrated Circuit" onclick="selectCategory(this)">Integrated Circuit</a>
+            <a href="#Transmitter" onclick="selectCategory(this)">Transmitter</a>
             
           </div>
       </div>
@@ -3354,6 +3355,14 @@
             document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
             document.getElementById('category-level-2').innerHTML = '<option value="Control System & PLCs ">Control System & PLCs </option>';
             document.getElementById('category-level-3').innerHTML = '<option value="Integrated Circuit">Integrated Circuit</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'Transmitter') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Transmitter">Transmitter</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-4').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
