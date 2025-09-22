@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
-<link rel="icon" type="image/png" href="https://platinum-international.store/wp-content/uploads/2023/09/favicon.png"/>
+<link rel="icon" type="image/png" href="https://platinum-international.store/wp-content/uploads/2025/09/favicon.png"/>
     <title>Product to CSV</title>
     <style>
 	    body {
@@ -172,26 +172,26 @@
 	<script>
 		// List of background images to cycle through
 		const images = [
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-1.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-2.jpg', // Replace with the URL of your second image
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-3.jpg',   // Replace with the URL of your third image, and so on
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-4.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-5.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-6.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-7.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-8.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-9.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-10.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-11.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-12.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-13.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-14.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-15.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-16.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-17.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-18.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-19.jpg',
-			'https://platinum-international.store/wp-content/uploads/2023/09/background-csv-20.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-1.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-2.jpg', // Replace with the URL of your second image
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-3.jpg',   // Replace with the URL of your third image, and so on
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-4.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-5.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-6.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-7.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-8.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-9.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-10.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-11.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-12.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-13.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-14.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-15.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-16.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-17.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-18.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-19.jpg',
+			'https://platinum-international.store/wp-content/uploads/2025/09/background-csv-20.jpg',
 		];
 		let currentIndex = 0;
 		
@@ -219,7 +219,7 @@
     <div class="container">
 	    <div id="logo-container">
 		    <a href="https://platinum-international.store/" id="logo-link">
-			    <img src="https://platinum-international.store/wp-content/uploads/2023/09/LogoCSV.png" id="logo"
+			    <img src="https://platinum-international.store/wp-content/uploads/2025/09/LogoCSV.png" id="logo"
 				    style="display: block; margin-left: auto; margin-right: auto;" />
 		    </a>
 	    </div>
@@ -642,6 +642,9 @@
             <a href="#Integrated Circuit" onclick="selectCategory(this)">Integrated Circuit</a>
             <a href="#Transmitter" onclick="selectCategory(this)">Transmitter</a>
             <a href="#Electronic Inserts" onclick="selectCategory(this)">Electronic Inserts</a>
+            <a href="#Level Measurement" onclick="selectCategory(this)">Level Measurement</a>
+            <a href="#Level Switch" onclick="selectCategory(this)">Level Switch</a>
+            <a href="#Vibrating / Tuning Fork Level Switch" onclick="selectCategory(this)">Vibrating / Tuning Fork Level Switch</a>
             
           </div>
       </div>
@@ -3376,6 +3379,30 @@
             document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'Level Measurement') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Level Measurement">Level Measurement</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-4').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'Level Switch') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Level Measurement">Level Measurement</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Level Switch">Level Switch</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'Vibrating / Tuning Fork Level Switch') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Level Measurement">Level Measurement</option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Level Switch">Level Switch</option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="Vibrating / Tuning Fork Level Switch">Vibrating / Tuning Fork Level Switch</option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
         } else {
             //Reset category level values if you enter an unexpected value.
             document.getElementById('category-level-1').innerHTML = '<option value=""></option>';
@@ -3926,7 +3953,7 @@
           <p>Copyright &copy; 2024 <a style="color: #551a8b;"
               href="https://platinum-international.store/">platinum-international.store</a><em> | Powered by <span
                 style="color: #551a8b;">Ali Khallawi </span><img
-                src="https://platinum-international.store/wp-content/uploads/2023/10/verified-1.png" alt="Ali Khallawi Icon"
+                src="https://platinum-international.store/wp-content/uploads/2025/09/verified-1.png" alt="Ali Khallawi Icon"
                 width="17" height="17"></em></p>
         </div>
       </footer>
@@ -3941,3 +3968,4 @@
 	
 </body>
 </html>
+
