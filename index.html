@@ -671,6 +671,9 @@
             <a href="#Cast Iron Cartridge Ball Bearing Unit" onclick="selectCategory(this)">Cast Iron Cartridge Ball Bearing Unit</a>
             <a href="#Cast Iron Three Bolt Triangular Housing Bolt" onclick="selectCategory(this)">Cast Iron Three Bolt Triangular Housing Bolt</a>
             <a href="#Cast Iron Adjustable Flange Housing" onclick="selectCategory(this)">Cast Iron Adjustable Flange Housing</a>
+            <a href="#NSK Linear Guideway" onclick="selectCategory(this)">NSK Linear Guideway</a>
+            <a href="#TSUBAKI Linear Guideway" onclick="selectCategory(this)">TSUBAKI Linear Guideway</a>
+            <a href="#IKO Linear Guideway" onclick="selectCategory(this)">IKO Linear Guideway</a>
             
           </div>
       </div>
@@ -3637,6 +3640,30 @@
             document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
             document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'NSK Linear Guideway') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Bearings ">Bearings </option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Linear Bearings ">Linear Bearings </option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="NSK Linear Guideway">NSK Linear Guideway</option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'TSUBAKI Linear Guideway') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Bearings ">Bearings </option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Linear Bearings ">Linear Bearings </option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="TSUBAKI Linear Guideway">TSUBAKI Linear Guideway</option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
+        } else if (selectedCategory === 'IKO Linear Guideway') {
+            document.getElementById('category-level-1').innerHTML = '<option value="Products">Products</option>';
+            document.getElementById('category-level-2').innerHTML = '<option value="Bearings ">Bearings </option>';
+            document.getElementById('category-level-3').innerHTML = '<option value="Linear Bearings ">Linear Bearings </option>';
+            document.getElementById('category-level-4').innerHTML = '<option value="IKO Linear Guideway">IKO Linear Guideway</option>';
+            document.getElementById('category-level-5').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-6').innerHTML = '<option value=""></option>';
+            document.getElementById('category-level-7').innerHTML = '<option value=""></option>';
         } else {
             //Reset category level values if you enter an unexpected value.
             document.getElementById('category-level-1').innerHTML = '<option value=""></option>';
@@ -4211,6 +4238,7 @@
 	
 </body>
 </html>
+
 
 
 
